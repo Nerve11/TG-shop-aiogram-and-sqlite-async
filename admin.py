@@ -4,9 +4,9 @@ from aiogram.filters.command import Command
 import aiosqlite
 from aiogram.fsm.context import FSMContext
 
-ADMIN_ID = 7182216385  # Замените на ваш реальный ID администратора
+ADMIN_ID = 6969696969696969  #  реальный ID администратора
 
-# Функция для старта админ-панели
+# def для старта админ-панели
 async def admin_start(message: Message):
     if message.from_user.id == ADMIN_ID:
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
@@ -17,7 +17,7 @@ async def admin_start(message: Message):
     else:
         await message.answer("У вас нет доступа к админ-панели.")
 
-# Начало процесса рассылки
+# Начало рассылки
 async def broadcast_start(callback_query: types.CallbackQuery, state: FSMContext):
     if callback_query.from_user.id == ADMIN_ID:
         await callback_query.message.answer("Введите сообщение для рассылки:")
@@ -29,9 +29,9 @@ async def broadcast_message(message: Message, state: FSMContext):
     if not data.get("broadcast_next"):
         return
 
-    await state.update_data(broadcast_next=False)  # Сброс состояния после запуска рассылки
+    await state.update_data(broadcast_next=False)
 
-    # Подключаемся к базе данных и получаем всех пользователей
+    # Подключение к базе данных и получение всех пользователей
     async with aiosqlite.connect('database.db') as db:
         async with db.execute("SELECT user_id FROM users WHERE is_active=1") as cursor:
             async for row in cursor:
