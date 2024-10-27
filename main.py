@@ -8,7 +8,7 @@ from db import init_db, add_user, increment_user_activity, log_message, log_bloc
 from admin import register_admin_handlers
 from shop import register_shop_handlers
 
-API_TOKEN = "8100554424:AAFeTwBDdqChx-Yrf2O1BPiyQul-j5wgwMc"  #токен из ботфазер
+API_TOKEN = "****************"  #токен из ботфазер
 logging.basicConfig(level=logging.INFO)
 
 async def start_handler(message: Message):
